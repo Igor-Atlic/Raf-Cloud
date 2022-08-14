@@ -1,0 +1,71 @@
+<div *ngIf = "error" class="alert alert-danger" role="alert">
+  Error: {{errorMessage}}
+</div>
+<H4><strong>SEARCH</strong></H4>
+<form [formGroup]="exform">
+
+  <div class="form-group">
+    <label class="col-form-label">Name:</label>
+    <input formControlName="name" type="text" class="form-control" >
+  </div>
+  <div class="form-group">
+  <label class="col-form-label">Date From:</label>
+  <input formControlName="dateFrom" type="date" class="form-control">
+  </div>
+  <div class="form-group">
+    <label class="col-form-label">Date To:</label>
+    <input formControlName="dateTo" type="date" class="form-control">
+  </div>
+
+</form>
+
+  <div class="form-group form-check">
+    <input type="checkbox" [(ngModel)] = "running" class="form-check-input" id="running">
+    <label class="form-check-label" for="running">Running</label>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" [(ngModel)] = "stopped" class="form-check-input" id="stopped">
+    <label class="form-check-label" for="stopped">Stopped</label>
+  </div>
+  <button (click) = "search()" class="btn btn-primary">Search</button>
+
+<hr>
+
+<br>
+<div>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Created At</th>
+      <th scope="col">Created By</th>
+      <th scope="col">Start</th>
+
+      <th scope="col">Stop</th>
+
+      <th scope="col">Restart</th>
+      <th scope="col">Schedule</th>
+      <th scope="col">Delete</th>
+  
+    </tr>
+    </thead>
+    <tbody *ngFor="let m of machine;">
+    <tr >
+      <th scope="row">{{ m.machineId }}</th>
+      <td >{{ m.machineName }}</td>
+      <td >{{ m.status }}</td>
+      <td >{{ m.createdAt }}</td>
+      <td >{{ m.createdBy.email }}</td>
+      <td><button [disabled] =!userService.getPermissions().includes(userService.getStart()) type="button" (click) = "start( m.machineId )"class="btn btn-success" >Start</button></td>
+      <td><button [disabled] =!userService.getPermissions().includes(userService.getStop()) type="button" (click) = "stop( m.machineId )"class="btn btn-danger" >Stop</button></td>
+      <td><button [disabled] =!userService.getPermissions().includes(userService.getRestart()) type="button" (click) = "restart( m.machineId )"class="btn btn-success" >Restart</button></td>
+      <td><button [disabled] =schedule type="button" (click) = "sch( m.machineId )"class="btn btn-success" >Schedule</button></td>
+      <td><button [disabled] =!userService.getPermissions().includes(userService.getDeleteM()) type="button" (click) = "delete( m.machineId )"class="btn btn-danger" >X</button></td>
+
+    </tr>
+  
+    </tbody>
+  </table>
+</div>

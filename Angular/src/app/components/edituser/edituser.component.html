@@ -1,0 +1,73 @@
+<div>
+  <div *ngIf = "error" class="alert alert-danger" role="alert">
+    Error: {{errorMessage}}
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="text" [(ngModel)] = "user.email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+    <label for="firstName">First name</label>
+    <input type="text" [(ngModel)] = "user.firstName" class="form-control" id="firstName" aria-describedby="emailHelp" >
+    <label for="exampleInputEmail1">Last name</label>
+    <input type="text" [(ngModel)] = "user.lastName" class="form-control" id="lastName" aria-describedby="emailHelp" >
+
+
+    <div class="form-check form-check-inline">
+    <label class="form-check-label"  for="can_create_users">can_create_users </label>
+      <input class="form-check-input" [(ngModel)] = "canC"type="checkbox" value="" id="can_create_users">
+
+    </div>
+    <div class="form-check form-check-inline">
+
+    <label class="form-check-label" for="can_read_users">can_read_users </label>
+    <input class="form-check-input" [(ngModel)] = "canR" type="checkbox" value="" id="can_read_users">
+    </div>
+
+    <div class="form-check form-check-inline">
+
+      <label class="form-check-label" for="can_update_users">can_update_users </label>
+    <input class="form-check-input" [(ngModel)] = "canU" type="checkbox" value="" id="can_update_users">
+    </div>
+
+    <div class="form-check form-check-inline">
+
+      <label class="form-check-label" for="can_delete_users">can_delete_users </label>
+    <input class="form-check-input" [(ngModel)] = "canD" type="checkbox" value="" id="can_delete_users">
+    </div>
+    <div class="form-check form-check-inline">
+      <label class="form-check-label"  for="can_search_machines">can_search_machines </label>
+      <input class="form-check-input" [(ngModel)] = "canSM"type="checkbox" value="" id="can_search_machines">
+
+    </div>
+    <div class="form-check form-check-inline">
+
+      <label class="form-check-label" for="can_start_machines">can_start_machines </label>
+      <input class="form-check-input" [(ngModel)] = "canS" type="checkbox" value="" id="can_start_machines">
+    </div>
+
+    <div class="form-check form-check-inline">
+
+      <label class="form-check-label" for="can_stop_machines">can_stop_machines </label>
+      <input class="form-check-input" [(ngModel)] = "canST" type="checkbox" value="" id="can_stop_machines">
+    </div>
+
+    <div class="form-check form-check-inline">
+
+      <label class="form-check-label" for="can_restart_machines">can_restart_machines </label>
+      <input class="form-check-input" [(ngModel)] = "canRM" type="checkbox" value="" id="can_restart_machines">
+    </div>
+    <div class="form-check form-check-inline">
+      <label class="form-check-label"  for="can_create_machines">can_create_machines </label>
+      <input class="form-check-input" [(ngModel)] = "canCM"type="checkbox" value="" id="can_create_machines">
+
+    </div>
+    <div class="form-check form-check-inline">
+
+      <label class="form-check-label" for="can_destroy_machines">can_destroy_machines </label>
+      <input class="form-check-input" [(ngModel)] = "canDM" type="checkbox" value="" id="can_destroy_machines">
+    </div>
+  </div>
+
+
+  <button  (click)="edit()" class="btn btn-primary">Submit</button>
+</div>

@@ -1,0 +1,32 @@
+<div *ngIf = "error" class="alert alert-danger" role="alert">
+    Error: {{errorMessage}}
+  </div>
+
+  <H4><strong>Errors</strong></H4>
+
+  <div>
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+
+        <th scope="col">Machine Id</th>
+        <th scope="col">Fun</th>
+        <th scope="col">Date</th>
+        <th scope="col">Message</th>
+    
+      </tr>
+      </thead>
+      <tbody *ngFor="let e of errors;">
+      <tr >
+        <th scope="row">{{ e.errorId }}</th>
+        <td >{{ e.machineId}}</td>
+        <td >{{ e.fun }}</td>
+        <td >{{ e.date }}</td>
+        <td >{{ e.message }}</td>
+
+      </tr>
+    
+      </tbody>
+    </table>
+  </div>
